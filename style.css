@@ -4,6 +4,10 @@
   --espaciado-base: 16px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family:
     system-ui,
@@ -31,14 +35,6 @@ a {
 
 ul {
   list-style: none;
-}
-
-.info__container,
-.bio__container,
-.course__container {
-  min-height: 100vh;
-  margin-top: 5em;
-  padding-top: 5em;
 }
 
 .section {
@@ -105,7 +101,8 @@ ul {
 }
 
 .home__title {
-  font-size: 6rem;
+  max-width: 50%;
+  font-size: 3rem;
 }
 
 .home__contact {
@@ -129,17 +126,23 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 5em;
-  height: 100vh;
   justify-content: center;
 }
 
 .bio__title {
+  padding-top: 2.5em;
   text-align: center;
-  font-size: 3em;
+  font-size: 2.5rem;
 }
 
 .bio__desc {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #222;
+  border-radius: 0.3125rem;
+  padding: 2em 4em;
+  background-color: #f0f0f0;
   gap: 5em;
 }
 
@@ -154,16 +157,23 @@ ul {
 .bio__desc-text {
   display: flex;
   flex-direction: column;
-  gap: 5em;
+  justify-content: center;
+  gap: 1.2em;
 }
 
 .bio__desc-text p {
   font-size: 1.2em;
 }
 
+.info__container {
+  gap: 0;
+  padding-top: 2em;
+}
+
 .info__title {
   text-align: center;
-  font-size: 3em;
+  font-size: 2.5rem;
+  padding: 1.5em 0;
 }
 
 .info__desc {
@@ -177,7 +187,6 @@ ul {
   justify-content: center;
   align-items: center;
   gap: 2em;
-  padding: 1em;
   flex: 1;
 }
 
@@ -187,15 +196,21 @@ ul {
 
 .info__desc-p {
   line-height: 2;
+  padding: 0 1em;
 }
 
 img {
   max-height: 100%;
   flex: 1;
+  object-fit: cover;
 }
 
 .info__desc:nth-child(even) {
   flex-direction: row-reverse;
+}
+
+.course__container {
+  padding-top: 7em;
 }
 
 .course__subtitle {
@@ -206,7 +221,7 @@ img {
 }
 
 .course__title {
-  font-size: 3em;
+  font-size: 2.5rem;
 }
 
 .course__box-container {
@@ -221,19 +236,19 @@ img {
 .course__box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 20em;
   height: 25em;
-  padding: 3em 2em;
+  padding: 3em 1.5em;
   hyphens: auto;
-  gap: 5em;
+  gap: 2em;
   border-radius: 0.3125rem;
   border: 2px solid #000;
 }
 
 .course__subtitle {
-  font-size: 2em;
+  font-size: 1.3em;
   text-align: center;
 }
 
