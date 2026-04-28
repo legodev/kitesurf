@@ -1,6 +1,10 @@
 :root {
   --white: #fff;
-  --color-primario: #2c3e50;
+  --color-primario: #c00000;
+  --color-secundario: #d3ccc7;
+  --color-terciario: #efeee8;
+  --negro: #000000;
+
   --espaciado-base: 16px;
 }
 
@@ -21,6 +25,8 @@ body {
     'Open Sans',
     'Helvetica Neue',
     sans-serif;
+  background-color: var(--negro);
+  color: #fff;
 }
 
 * {
@@ -37,6 +43,10 @@ ul {
   list-style: none;
 }
 
+span {
+  color: var(--color-primario);
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -48,9 +58,10 @@ ul {
 .header__container {
   position: fixed;
   top: 0;
-  background-color: rgb(58, 58, 58);
   height: 6em;
   width: 100vw;
+  background-color: #000;
+  border-bottom: 1px solid #222;
 }
 
 .header__nav {
@@ -68,6 +79,7 @@ ul {
 
 .header__logo-text {
   color: var(--white);
+  font-weight: 700;
 }
 
 .header__list {
@@ -79,7 +91,13 @@ ul {
 
 .header__list-item a {
   color: var(--white);
+  font-weight: 500;
   align-self: center;
+  transition: color 0.3s ease;
+}
+
+.header__list-item a:hover {
+  color: var(--color-primario);
 }
 
 .container {
@@ -97,7 +115,7 @@ ul {
 
 .home__main {
   display: grid;
-  gap: 2em;
+  gap: 4em;
 }
 
 .home__title {
@@ -112,12 +130,26 @@ ul {
 }
 
 .home__btn {
-  border: 1px solid gray;
+  font-weight: 600;
+  border: 1px solid transparent;
+  background-color: var(--color-primario);
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 15px 25px;
+  color: var(--negro);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.home__btn:hover {
+  background-color: transparent;
+  color: var(--color-primario);
+  border-color: var(--color-primario);
 }
 
 .home__phrase {
+  color: #d4d4d4;
   margin-top: 5em;
   text-align: center;
 }
@@ -133,16 +165,16 @@ ul {
   padding-top: 2.5em;
   text-align: center;
   font-size: 2.5rem;
+  color: var(--color-primario);
 }
 
 .bio__desc {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #222;
+  border: 2px solid #ffffff;
   border-radius: 0.3125rem;
   padding: 2em 4em;
-  background-color: #f0f0f0;
   gap: 5em;
 }
 
@@ -179,6 +211,10 @@ ul {
 .info__desc {
   display: flex;
   max-height: 300px;
+}
+
+.info__desc img {
+  width: 300px;
 }
 
 .info__desc-text {
@@ -222,6 +258,12 @@ img {
 
 .course__title {
   font-size: 2.5rem;
+  color: var(--color-primario);
+}
+
+.course__disclaimer {
+  font-size: 1rem;
+  color: #d4d4d4;
 }
 
 .course__box-container {
@@ -244,10 +286,30 @@ img {
   hyphens: auto;
   gap: 2em;
   border-radius: 0.3125rem;
-  border: 2px solid #000;
+  border: 5px solid var(--color-primario);
+}
+
+.course__box:nth-child(even) {
+  background-color: var(--color-primario);
+  color: var(--negro);
+}
+
+.course__box:nth-child(even) .course__subtitle {
+  color: var(--negro);
+}
+
+.course__box:nth-child(even) .course__btn {
+  color: var(--negro);
+  border-color: var(--negro);
+}
+
+.course__box:nth-child(even) .course__btn:hover {
+  background-color: var(--negro);
+  color: var(--color-primario);
 }
 
 .course__subtitle {
+  color: var(--color-secundario);
   font-size: 1.3em;
   text-align: center;
 }
@@ -257,14 +319,23 @@ img {
 }
 
 .course__btn {
-  border: 1px solid #000;
-  color: #000;
+  border: 2px solid var(--color-primario);
+  font-weight: 500;
+  color: var(--color-primario);
   border-radius: 0.3125rem;
   padding: 0.625rem 0.9375rem;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+
+.course__btn:hover {
+  background-color: var(--color-primario);
+  color: var(--negro);
 }
 
 .footer {
-  background-color: #222;
+  background-color: #080808;
   margin-top: 5em;
   padding: 1em 0;
 }
@@ -294,4 +365,17 @@ img {
 
 .footer__links a {
   color: var(--white);
+}
+
+.whatsapp__button {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 3000;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-primario);
 }
