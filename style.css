@@ -62,6 +62,7 @@ span {
   width: 100vw;
   background-color: #000;
   border-bottom: 1px solid #222;
+  z-index: 1000;
 }
 
 .header__nav {
@@ -111,6 +112,23 @@ span {
   justify-content: center;
   height: calc(100vh - 6em);
   margin-top: 6em;
+  overflow: hidden;
+}
+
+.home::before {
+  content: '';
+  background-image: url('imagenes/fondo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.2;
+  mask-image: linear-gradient(var(--negro) 95%, transparent);
 }
 
 .home__main {
@@ -172,7 +190,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-primario);
   border-radius: 0.3125rem;
   padding: 2em 4em;
   gap: 5em;
@@ -247,6 +265,11 @@ img {
 
 .course__container {
   padding-top: 7em;
+  .course__container {
+    padding-top: 8em;
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .course__subtitle {
@@ -287,25 +310,10 @@ img {
   gap: 2em;
   border-radius: 0.3125rem;
   border: 5px solid var(--color-primario);
-}
 
-.course__box:nth-child(even) {
-  background-color: var(--color-primario);
-  color: var(--negro);
-}
-
-.course__box:nth-child(even) .course__subtitle {
-  color: var(--negro);
-}
-
-.course__box:nth-child(even) .course__btn {
-  color: var(--negro);
-  border-color: var(--negro);
-}
-
-.course__box:nth-child(even) .course__btn:hover {
-  background-color: var(--negro);
-  color: var(--color-primario);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .course__subtitle {
@@ -334,39 +342,66 @@ img {
   color: var(--negro);
 }
 
+/* --- Footer Renovado --- */
 .footer {
   background-color: #080808;
   margin-top: 5em;
-  padding: 1em 0;
+  padding: 4em 0 2em 0; /* Más espacio arriba */
+  border-top: 1px solid #222; /* Línea divisoria elegante */
 }
 
 .footer__sections {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 5em;
+  display: grid;
+  /* Usamos grid para mejor control que flex */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3em;
   margin: 0 auto;
   max-width: 1200px;
+  padding: 0 2em;
 }
 
 .footer__section {
-  display: grid;
-  gap: 1em;
-}
-
-.footer__links {
-  display: grid;
-  gap: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
 }
 
 .footer__title {
-  font-size: 1.2em;
-  color: var(--white);
+  font-size: 1.1rem;
+  color: var(--color-primario);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
 }
 
 .footer__links a {
-  color: var(--white);
+  color: #888;
+  font-size: 0.95rem;
+  transition:
+    color 0.3s ease,
+    padding-left 0.3s ease;
 }
 
+.footer__links a:hover {
+  color: var(--white);
+  padding-left: 5px;
+}
+
+.footer__copyright {
+  text-align: center;
+  margin-top: 4em;
+  padding-top: 2em;
+  border-top: 1px solid #111;
+  color: #444;
+  font-size: 0.8rem;
+  width: 100%;
+}
 .whatsapp__button {
   position: fixed;
   bottom: 18px;
@@ -378,4 +413,79 @@ img {
   justify-content: center;
   align-items: center;
   color: var(--color-primario);
+}
+
+.places__container {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.places__title {
+  font-size: 2.5rem;
+  margin-bottom: 1em;
+}
+
+.places__intro {
+  color: #d4d4d4;
+  margin-bottom: 3em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.places__grid {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  flex-wrap: wrap; /* Para que en móviles se pongan una debajo de otra */
+  padding: 0 1em;
+}
+
+.place__card {
+  background-color: #111; /* Un gris muy oscuro para que resalte del fondo negro */
+  border: 1px solid #222;
+  border-radius: 10px;
+  width: 300px;
+  padding: 2em;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+}
+
+.place__card:hover {
+  transform: translateY(-10px);
+  border-color: var(--color-primario);
+  box-shadow: 0px 4px 10px 2px var(--color-primario);
+}
+
+.place__name {
+  font-size: 1.5rem;
+  color: var(--color-primario);
+  margin-bottom: 0.5em;
+}
+
+.place__desc {
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.place__map {
+  margin-top: 1.5em;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  line-height: 0;
+}
+
+.place__map iframe {
+  filter: grayscale(100%) invert(90%) contrast(90%);
+  transition: filter 0.3s ease;
+}
+
+.place__card:hover .place__map iframe {
+  filter: grayscale(0%) invert(0%);
 }
